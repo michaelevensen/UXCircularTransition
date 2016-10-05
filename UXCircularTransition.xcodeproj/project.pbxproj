@@ -16,7 +16,6 @@
 		9E48CF2F1DA41C98002603D2 /* UXCircularTransitionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48CF2E1DA41C98002603D2 /* UXCircularTransitionUITests.swift */; };
 		9E48CF3D1DA4E4D3002603D2 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48CF3C1DA4E4D3002603D2 /* PopAnimator.swift */; };
 		9E48CF3F1DA4E5CA002603D2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48CF3E1DA4E5CA002603D2 /* SecondViewController.swift */; };
-		9E48CF431DA4E60E002603D2 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48CF421DA4E60E002603D2 /* CircularButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		9E48CF301DA41C98002603D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E48CF3C1DA4E4D3002603D2 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		9E48CF3E1DA4E5CA002603D2 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		9E48CF421DA4E60E002603D2 /* CircularButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				9E48CF401DA4E5D0002603D2 /* Resources */,
-				9E48CF421DA4E60E002603D2 /* CircularButton.swift */,
 				9E48CF101DA41C97002603D2 /* ViewController.swift */,
 				9E48CF3E1DA4E5CA002603D2 /* SecondViewController.swift */,
 				9E48CF3C1DA4E4D3002603D2 /* PopAnimator.swift */,
@@ -283,7 +280,6 @@
 				9E48CF111DA41C97002603D2 /* ViewController.swift in Sources */,
 				9E48CF3D1DA4E4D3002603D2 /* PopAnimator.swift in Sources */,
 				9E48CF0F1DA41C97002603D2 /* AppDelegate.swift in Sources */,
-				9E48CF431DA4E60E002603D2 /* CircularButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,84 +18,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpf-0s-W3R" customClass="CircularButton" customModule="UXCircularTransition" customModuleProvider="target">
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDm-fq-5tu" userLabel="Button View">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpf-0s-W3R">
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="2af-NN-xOY"/>
+                                            <constraint firstAttribute="width" constant="120" id="Gv6-Ym-Sz0"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tAQ-fn-o58"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjZ-dz-vuR">
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="AKC-G5-PZ8"/>
+                                            <constraint firstAttribute="height" constant="120" id="pIr-sb-ZGc"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sc4-Lc-zF4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Da5-0U-SLM">
+                                        <color key="backgroundColor" red="0.5077323317527771" green="0.16158577799797058" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="BLO-JB-U4X"/>
+                                            <constraint firstAttribute="height" constant="120" id="qUG-ez-kZh"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OqZ-EL-Faf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiG-lm-dSD">
+                                        <color key="backgroundColor" red="0.2784313725" green="0.94509803920000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="amo-Bx-l0S"/>
+                                            <constraint firstAttribute="width" constant="120" id="lar-aA-saR"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QGW-e4-IMC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="ISR-ic-BV3"/>
-                                    <constraint firstAttribute="height" constant="120" id="c0W-Ms-WDM"/>
+                                    <constraint firstAttribute="bottom" secondItem="wiG-lm-dSD" secondAttribute="bottom" id="1XJ-D9-h5K"/>
+                                    <constraint firstAttribute="height" constant="290" id="867-Xk-PW1"/>
+                                    <constraint firstItem="wpf-0s-W3R" firstAttribute="leading" secondItem="tDm-fq-5tu" secondAttribute="leading" id="W15-yq-Ves"/>
+                                    <constraint firstAttribute="bottom" secondItem="DjZ-dz-vuR" secondAttribute="bottom" id="Ys4-BN-cow"/>
+                                    <constraint firstItem="wpf-0s-W3R" firstAttribute="top" secondItem="tDm-fq-5tu" secondAttribute="top" id="aXr-ET-nRr"/>
+                                    <constraint firstAttribute="trailing" secondItem="Da5-0U-SLM" secondAttribute="trailing" id="ggU-hc-oGO"/>
+                                    <constraint firstAttribute="width" constant="290" id="gir-Dm-D8H"/>
+                                    <constraint firstAttribute="trailing" secondItem="wiG-lm-dSD" secondAttribute="trailing" id="soi-4b-06q"/>
+                                    <constraint firstItem="DjZ-dz-vuR" firstAttribute="leading" secondItem="tDm-fq-5tu" secondAttribute="leading" id="usL-AW-J34"/>
+                                    <constraint firstItem="Da5-0U-SLM" firstAttribute="top" secondItem="tDm-fq-5tu" secondAttribute="top" id="vzz-dB-YEd"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCircleBackground" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tAQ-fn-o58"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjZ-dz-vuR" customClass="CircularButton" customModule="UXCircularTransition" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="AKC-G5-PZ8"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="d6q-vt-DWQ"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="mWg-o5-bdV"/>
-                                    <constraint firstAttribute="height" constant="120" id="pIr-sb-ZGc"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCircleBackground" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sc4-Lc-zF4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Da5-0U-SLM" customClass="CircularButton" customModule="UXCircularTransition" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.5077323317527771" green="0.16158577799797058" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="1CF-zb-PuM"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="1rz-1f-I4B"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="AlA-dM-e9u"/>
-                                    <constraint firstAttribute="width" constant="120" id="XJY-Bj-j8b"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCircleBackground" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OqZ-EL-Faf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiG-lm-dSD" customClass="CircularButton" customModule="UXCircularTransition" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.2784313725" green="0.94509803920000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="ZbO-hU-wuw"/>
-                                    <constraint firstAttribute="height" constant="120" id="amo-Bx-l0S"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="hWo-Qb-RtA"/>
-                                    <constraint firstAttribute="width" constant="120" id="lar-aA-saR"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCircleBackground" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="handleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QGW-e4-IMC"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Da5-0U-SLM" firstAttribute="top" secondItem="wpf-0s-W3R" secondAttribute="bottom" constant="50" id="CSH-8Y-sT5"/>
-                            <constraint firstItem="wiG-lm-dSD" firstAttribute="leading" secondItem="DjZ-dz-vuR" secondAttribute="leading" id="HiD-KH-W9o"/>
-                            <constraint firstItem="Da5-0U-SLM" firstAttribute="leading" secondItem="wpf-0s-W3R" secondAttribute="leading" id="Rtm-Lk-AZa"/>
-                            <constraint firstItem="DjZ-dz-vuR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="Yoq-wz-Quc"/>
-                            <constraint firstItem="DjZ-dz-vuR" firstAttribute="leading" secondItem="wpf-0s-W3R" secondAttribute="trailing" constant="50" id="Zga-8C-kqz"/>
-                            <constraint firstItem="wpf-0s-W3R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-85" id="aMl-Lq-xPb"/>
-                            <constraint firstItem="wiG-lm-dSD" firstAttribute="top" secondItem="DjZ-dz-vuR" secondAttribute="bottom" constant="50" id="dtC-Lg-v0x"/>
-                            <constraint firstItem="wpf-0s-W3R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="viK-uZ-Nqh"/>
+                            <constraint firstItem="tDm-fq-5tu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tEI-fM-PWu"/>
+                            <constraint firstItem="tDm-fq-5tu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wNa-2D-CT1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="firstButton" destination="wpf-0s-W3R" id="2rw-jJ-Ghq"/>
+                        <outlet property="fourthButton" destination="wiG-lm-dSD" id="Twg-aV-iP0"/>
+                        <outlet property="secondButton" destination="DjZ-dz-vuR" id="0HZ-tm-ZjE"/>
+                        <outlet property="thirdButton" destination="Da5-0U-SLM" id="iQG-kd-E63"/>
                         <segue destination="oct-fP-XDJ" kind="presentation" identifier="SecondViewControllerSegue" id="iX2-s5-7IJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114" y="133"/>
+            <point key="canvasLocation" x="-114.49275362318842" y="132.88043478260872"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="sF4-bw-pyk">
@@ -121,7 +118,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.32805765086206895" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.90909618140000004" blue="0.44320815800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Dh0-uQ-yMd" firstAttribute="centerX" secondItem="hDN-eH-dO5" secondAttribute="centerX" id="466-v0-xb3"/>
                             <constraint firstItem="Dh0-uQ-yMd" firstAttribute="centerY" secondItem="hDN-eH-dO5" secondAttribute="centerY" id="lXt-5r-USa"/>
@@ -130,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JC-dj-LJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="643" y="133"/>
+            <point key="canvasLocation" x="655" y="133"/>
         </scene>
     </scenes>
 </document>

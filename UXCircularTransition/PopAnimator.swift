@@ -29,6 +29,17 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     // Starting point of transition
     var origin = CGPoint.zero
     
+    // Returns the frame for the circle required to fill the screen
+    func frameForCircle(center: CGPoint, size: CGSize, start: CGPoint) -> CGRect {
+        
+        let lengthX = fmax(start.x, size.width - start.x)
+        let lengthY = fmax(start.y, size.height - start.y)
+        let offset = sqrt(((lengthX * lengthX) + (lengthY * lengthY)) * 2)
+        let size = CGSize(width: offset, height: offset)
+        
+        return CGRect(origin: CGPoint.zero, size: size)
+    }
+    
     /* MARK: - Required: UIViewControllerAnimatedTransitioning Protocol */
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
@@ -48,11 +59,10 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         if self.transitionMode == .Present {
             
             // NOTE: This is the view (from the view controller) that is being presented / transitioned to
-            let presentedView = transitionContext.view(forKey: .to)
-            
-            // Unwrap
-            if let originalCenter = presentedView?.center,
-                let originalSize = presentedView?.frame.size {
+            if let presentedView = transitionContext.view(forKey: .to) {
+                
+                let originalCenter = presentedView.center
+                let originalSize = presentedView.frame.size
                 
                 /*
                  *  This is basically copying the view for the UIButton and making a new view that is going to be used for the transition itself.
@@ -60,72 +70,85 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                  */
                 
                 // Calculate the max size for the circle (to animate to)
-                self.circle = UIView(frame: CGRect(origin: originalCenter, size: CGSize(width: 3000, height: 3000)))
+                self.circle = UIView(frame: self.frameForCircle(center: originalCenter, size: originalSize, start: self.origin))
+                
+                // unwrap
+                guard let circleView = self.circle else {
+                    return
+                }
                 
                 // Fully rounded
-                self.circle!.layer.cornerRadius = self.circle!.frame.size.height / 2.0
-                self.circle!.center = self.origin
+                circleView.layer.cornerRadius = self.circle!.frame.size.height / 2
+                circleView.center = self.origin
                 
                 // Initially make it very small
-                self.circle!.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
                 
                 // Set BackgroundColor
-                self.circle!.backgroundColor = self.circleColor
+                circleView.backgroundColor = self.circleColor
                 
                 /*
                 *   Here I am adding this constructed UIView (that is to be animated) into the containerView which is the holding View (the view that you animate) for the animation.
                 */
-                containterView.addSubview(self.circle!)
+                containterView.addSubview(circleView)
                 
                 // Make presentedView very small and transparent
-                presentedView?.center = origin
-                presentedView?.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                presentedView.center = self.origin
+                presentedView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+//                presentedView.alpha = 0
                 
                 // Set background color
-                presentedView?.backgroundColor = self.circleColor!
+                presentedView.backgroundColor = self.circleColor!
                 
                 // Add presented view to container view
-                containterView.addSubview(presentedView!)
+                containterView.addSubview(presentedView)
                 
                 /*
-                *   Animate
+                *   Animate both views
                 */
                 UIView.animate(withDuration: self.presentDuration, animations: {
                     
                         // scale up circleview
-                        self.circle?.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        circleView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                     
                         // scale up presentedview
-                        presentedView?.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        presentedView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                     
                         // preserve center
-                        presentedView?.center = originalCenter
+                        presentedView.center = originalCenter
                     
                     }, completion: { (finished) in
+                        
+                        // On completion, complete the transition
                         transitionContext.completeTransition(finished)
                 })
             }
         }
         
+        /* Back */
         else {
-            let returningViewController = transitionContext.view(forKey: .from)
-            let originalCenter = returningViewController?.center
-            let originalSize = returningViewController?.frame.size
+            guard let returningControllerView = transitionContext.view(forKey: .from), let circleView = self.circle else {
+                return
+            }
             
-            self.circle!.frame = CGRect(origin: originalCenter!, size: originalSize!)
-            self.circle!.layer.cornerRadius = self.circle!.frame.size.height / 2.0
-            self.circle!.center = self.origin
+            let originalCenter = returningControllerView.center
+            let originalSize = returningControllerView.frame.size
+            
+            circleView.frame = self.frameForCircle(center: originalCenter, size: originalSize, start: self.origin)
+            circleView.layer.cornerRadius = circleView.frame.size.height / 2
+            circleView.center = self.origin
             
             UIView.animate(withDuration: self.dismissDuration, animations: {
                 
-                self.circle?.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-                returningViewController?.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-                returningViewController?.center = self.origin
-                returningViewController?.alpha = 0
+                circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                returningControllerView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                returningControllerView.center = self.origin
+                returningControllerView.alpha = 0
+                
                 
                 }, completion: { (_) in
-                    returningViewController?.removeFromSuperview()
-                    self.circle?.removeFromSuperview()
+                    returningControllerView.removeFromSuperview()
+                    circleView.removeFromSuperview()
                     transitionContext.completeTransition(true)
             })
         }
