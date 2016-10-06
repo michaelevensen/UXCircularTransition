@@ -27,14 +27,22 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     let dismissDuration = 0.3
     
     // Starting point of transition
-    var origin = CGPoint.zero
+    var startingPoint = CGPoint.zero {
+        didSet {
+            self.circle?.center = startingPoint
+        }
+    }
     
     // Returns the frame for the circle required to fill the screen
     func frameForCircle(center: CGPoint, size: CGSize, start: CGPoint) -> CGRect {
         
         let lengthX = fmax(start.x, size.width - start.x)
         let lengthY = fmax(start.y, size.height - start.y)
-        let offset = sqrt(((lengthX * lengthX) + (lengthY * lengthY)) * 2)
+    
+        /* NOTE: This is really important, because it offsets the original center point with the sizing for the circle */
+        let offset = sqrt(lengthX * lengthX + lengthY * lengthY) * 2
+        
+        // Size
         let size = CGSize(width: offset, height: offset)
         
         return CGRect(origin: CGPoint.zero, size: size)
@@ -70,7 +78,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                  */
                 
                 // Calculate the max size for the circle (to animate to)
-                self.circle = UIView(frame: self.frameForCircle(center: originalCenter, size: originalSize, start: self.origin))
+                self.circle = UIView(frame: self.frameForCircle(center: originalCenter, size: originalSize, start: self.startingPoint))
                 
                 // unwrap
                 guard let circleView = self.circle else {
@@ -79,7 +87,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                 
                 // Fully rounded
                 circleView.layer.cornerRadius = self.circle!.frame.size.height / 2
-                circleView.center = self.origin
+                circleView.center = self.startingPoint
                 
                 // Initially make it very small
                 circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
@@ -93,9 +101,8 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                 containterView.addSubview(circleView)
                 
                 // Make presentedView very small and transparent
-                presentedView.center = self.origin
+                presentedView.center = self.startingPoint
                 presentedView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-//                presentedView.alpha = 0
                 
                 // Set background color
                 presentedView.backgroundColor = self.circleColor!
@@ -134,15 +141,15 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             let originalCenter = returningControllerView.center
             let originalSize = returningControllerView.frame.size
             
-            circleView.frame = self.frameForCircle(center: originalCenter, size: originalSize, start: self.origin)
+            circleView.frame = self.frameForCircle(center: originalCenter, size: originalSize, start: self.startingPoint)
             circleView.layer.cornerRadius = circleView.frame.size.height / 2
-            circleView.center = self.origin
+            circleView.center = self.startingPoint
             
             UIView.animate(withDuration: self.dismissDuration, animations: {
                 
                 circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
                 returningControllerView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-                returningControllerView.center = self.origin
+                returningControllerView.center = self.startingPoint
                 returningControllerView.alpha = 0
                 
                 

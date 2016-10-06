@@ -15,6 +15,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     @IBOutlet weak var thirdButton: UIButton!
     @IBOutlet weak var fourthButton: UIButton!
     
+    @IBOutlet weak var buttonView: UIView!
+    
     /* Transition */
     let transition = PopAnimator()
     
@@ -38,11 +40,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         // Transition Mode
         self.transition.transitionMode = .Present
         
-        // Convert center point to parent coordinate space.
-        let convertedCenter = self.selectedButton.convert(self.selectedButton.center, to: self.selectedButton.superview)
-        
         // The origin of the start of the transition, should be the center of the button. Eg. animate out from the center.
-        self.transition.origin = convertedCenter
+        self.transition.startingPoint = self.convertedButtonCenter()
         self.transition.circleColor = self.selectedButton.backgroundColor!
         
         return self.transition
@@ -54,14 +53,16 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         // Transition Mode
         self.transition.transitionMode = .Dismiss
         
-        // Convert center point to parent coordinate space.
-        let convertedCenter = self.selectedButton.convert(self.selectedButton.center, to: self.selectedButton.superview)
-        
         // Where should the animation reverse back to? Center of button.
-        self.transition.origin = convertedCenter
+        self.transition.startingPoint = self.convertedButtonCenter()
         self.transition.circleColor = self.selectedButton.backgroundColor!
         
         return self.transition
+    }
+    
+    // Since the buttons are embedded inside a UIView you need to account for this.
+    func convertedButtonCenter() -> CGPoint {
+        return CGPoint(x: self.buttonView.frame.origin.x + self.selectedButton.center.x, y: self.buttonView.frame.origin.y + self.selectedButton.center.y)
     }
     
     /* Handle Tap */

@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDm-fq-5tu" userLabel="Button View">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpf-0s-W3R">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpf-0s-W3R">
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="2af-NN-xOY"/>
@@ -83,6 +83,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonView" destination="tDm-fq-5tu" id="BW7-dO-JUF"/>
                         <outlet property="firstButton" destination="wpf-0s-W3R" id="2rw-jJ-Ghq"/>
                         <outlet property="fourthButton" destination="wiG-lm-dSD" id="Twg-aV-iP0"/>
                         <outlet property="secondButton" destination="DjZ-dz-vuR" id="0HZ-tm-ZjE"/>
