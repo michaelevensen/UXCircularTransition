@@ -23,7 +23,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     var circleColor: UIColor?
     
     /* Duration */
-    let presentDuration = 0.5
+    let presentDuration = 0.4
     let dismissDuration = 0.3
     
     // Starting point of transition
@@ -113,17 +113,15 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                 /*
                 *   Animate both views
                 */
-                UIView.animate(withDuration: self.presentDuration, animations: {
+                UIView.animate(withDuration: self.presentDuration, delay: 0.0, options: .curveEaseOut, animations: {
+                    // scale up circleview (to 1.1 and not 1.0 to avoid seeing the edge from the spring effect)
+                    circleView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                     
-                        // scale up circleview
-                        circleView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    // scale up presentedview
+                    presentedView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                     
-                        // scale up presentedview
-                        presentedView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                    
-                        // preserve center
-                        presentedView.center = originalCenter
-                    
+                    // preserve center
+                    presentedView.center = originalCenter
                     }, completion: { (finished) in
                         
                         // On completion, complete the transition
@@ -145,7 +143,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             circleView.layer.cornerRadius = circleView.frame.size.height / 2
             circleView.center = self.startingPoint
             
-            UIView.animate(withDuration: self.dismissDuration, animations: {
+            UIView.animate(withDuration: self.dismissDuration, delay: 0.0, options: .curveEaseOut, animations: {
                 
                 circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
                 returningControllerView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
